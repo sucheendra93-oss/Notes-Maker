@@ -1,0 +1,35 @@
+html, body, #root { margin: 0; height: 100%; }
+.editor {
+  --fg: #111; --muted: #888; --bg: #fff; --bar: #f0f0f3; --accent: #208aef;
+  height: 100%; display: flex; flex-direction: column;
+  font: 17px/1.5 system-ui, sans-serif; color: var(--fg); background: var(--bg);
+}
+.editor.dark { --fg: #eee; --muted: #888; --bg: #000; --bar: #212225; }
+.toolbar { display: flex; gap: 2px; overflow-x: auto; padding: 4px; background: var(--bar); flex-shrink: 0; }
+.toolbar button {
+  min-width: 40px; height: 40px; border: 0; border-radius: 6px; background: transparent;
+  color: var(--fg); font-size: 15px; font-weight: 600;
+}
+.toolbar button:active { background: rgba(127,127,127,.25); }
+.content { flex: 1; padding: 12px 16px 120px; outline: none; overflow-y: auto; }
+.editor > div { position: relative; }
+.placeholder { position: absolute; top: 60px; left: 16px; color: var(--muted); pointer-events: none; }
+.content p { margin: 0 0 8px; }
+.h1 { font-size: 1.6em; margin: 12px 0 8px; }
+.h2 { font-size: 1.35em; margin: 10px 0 6px; }
+.h3 { font-size: 1.15em; margin: 8px 0 4px; }
+.quote { margin: 8px 0; padding-left: 12px; border-left: 3px solid var(--muted); color: var(--muted); }
+.link { color: var(--accent); }
+.b { font-weight: bold; } .i { font-style: italic; } .u { text-decoration: underline; }
+.s { text-decoration: line-through; } .us { text-decoration: underline line-through; }
+.code { font-family: ui-monospace, monospace; background: var(--bar); padding: 1px 4px; border-radius: 4px; }
+.ul, .ol, .checklist { margin: 0 0 8px; padding-left: 24px; }
+.checklist { list-style: none; padding-left: 4px; }
+.checked, .unchecked { position: relative; padding-left: 28px; outline: none; }
+.checked::before, .unchecked::before {
+  content: ''; position: absolute; left: 0; top: 4px; width: 16px; height: 16px;
+  border: 2px solid var(--muted); border-radius: 4px; cursor: pointer;
+}
+.checked::before { background: var(--accent); border-color: var(--accent); }
+.checked { text-decoration: line-through; color: var(--muted); }
+.li:has(> .ul, > .ol, > .checklist) { list-style: none; }
